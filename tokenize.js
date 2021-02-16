@@ -26,6 +26,7 @@ function eat(str) {
     cpt = 0;
     while(true) {
         if (str[cpt] != ' ' && str[cpt] != '\n' && str[cpt] != '\t') {
+            console.log('not a blank', str[cpt])
             return cpt;
         }
         cpt ++;

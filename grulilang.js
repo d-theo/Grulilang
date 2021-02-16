@@ -5,7 +5,7 @@ const visitor = require('./compiler');
 const tokenizer = require('./tokenize');
 const parser = require('./parser');
 
-const mode = ' DEBUG'
+const mode = 'DEBUG'
 
 print('---- get source file ----');
 const pgrm = fs.readFileSync('./instruction.dm').toString();
@@ -21,7 +21,7 @@ const compiled = visitor.visitNodes(ast);
 print(compiled);
 
 print('---- Adding DM Libraries ----');
-const lib = `require('./lib/index')\n`;
+const lib = `require('./lib/index');\n\n`;
 
 print('---- Writing to file ----');
 fs.writeFileSync('./out.js', lib+compiled);
