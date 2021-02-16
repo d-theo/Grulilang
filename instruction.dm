@@ -1,3 +1,3 @@
 FOR $orga IN ["ATI"]
-    CHANGE("test")
+    CHANGE($orga)
 ENDFOR

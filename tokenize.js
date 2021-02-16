@@ -1,8 +1,15 @@
-const { assert } = require('chai');
-
 module.exports = {
-    tokenize_prgm 
-}
+    tokenize_prgm,
+    t_for,
+    t_in,
+    t_endfor,
+    t_string,
+    t_array,
+    t_var,
+    t_func,
+    tokenize,
+    eat,
+};
 
 function tokenize_prgm(pgrm) {
     const tokens = [];
@@ -174,41 +181,3 @@ function t_func(str) {
         length: cpt
     };
 }
-assert.equal(tokenize('"test"').value, "test");
-assert.equal(tokenize('$test').value, 'test');
-assert.equal(tokenize('["test"]').type, "array");
-assert.equal(tokenize('TEST()').type, 'function');
-
-assert.equal(t_string('"test"').value, "test");
-assert.equal(t_string('"test"').type, "string");
-assert.equal(t_string('"test"').length, 6);
-
-assert.equal(t_var('$test').value, 'test');
-assert.equal(t_var('$test').type, 'variable');
-assert.equal(t_var('$test').length, 5);
-
-assert.equal(t_for('FOR').type, 'for');
-assert.equal(t_for('FOR').value, '');
-
-assert.equal(t_in('IN').type, 'in');
-assert.equal(t_in('IN').value, '');
-
-assert.equal(t_array('[]').value.length, 0);
-assert.equal(t_array('[]').type, "array");
-assert.equal(t_array('[]').length, 2);
-
-assert.equal(t_array('["test"]').value[0], "test");
-assert.equal(t_array('["test"]').type, "array");
-assert.equal(t_array('["test"]').length, 8);
-
-assert.equal(t_array('["test", "lol"]').value[0], "test");
-assert.equal(t_array('["test", "lol"]').value[1], "lol");
-assert.equal(t_array('["test", "lol"]').type, "array");
-assert.equal(t_array('["test", "lol"]').length, 15);
-
-assert.equal(t_func('TEST()').value, 'TEST');
-assert.equal(t_func('TEST()').type, 'function');
-
-assert.equal(t_func('TEST("coucou",["test"],TEST())').value, 'TEST');
-assert.equal(t_func('TEST("coucou",["test"],TEST())').length, 30);
-assert.equal(t_func('TEST("coucou",["test"],TEST())').args.length, 3);

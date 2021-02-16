@@ -2,10 +2,10 @@
 
 #### MACRO disponibles
 
-* ALL_ORGA
-* ALL_PROPERTIES(orga)
-* AT_PROPERTIES(orga)
-* CUSTOM_PROPERTIES(orga)
+* #ALL_ORGA
+* #ALL_PROPERTIES(orga)
+* #AT_PROPERTIES(orga)
+* #CUSTOM_PROPERTIES(orga)
 
 #### Functions disponible
 ```
