@@ -36,13 +36,4 @@ assert.equal(tokenizer.t_array('["test", "lol"]').length, 15);
 assert.equal(tokenizer.t_func('TEST()').value, 'TEST');
 assert.equal(tokenizer.t_func('TEST()').type, 'function');
 
-assert.equal(tokenizer.t_func('TEST("coucou",["test"],TEST())').value, 'TEST');
-assert.equal(tokenizer.t_func('TEST("coucou",["test"],TEST())').length, 30);
-assert.equal(tokenizer.t_func('TEST("coucou",["test"],TEST())').args.length, 3);
-
-assert.equal(tokenizer.t_func('TEST ( "coucou" )').value, 'TEST');
-assert.equal(tokenizer.t_func('TEST ( "coucou" )').length, 17);
-assert.equal(tokenizer.t_func('TEST ( "coucou" )').args[0].value, "coucou");
-
-assert.equal(tokenizer.t_func('TEST ( "coucou" , "theo" )').value, 'TEST');
-assert.equal(tokenizer.t_func('TEST ( "coucou" , "theo" )').length, 26);
+assert.equal(tokenizer.tokenize_prgm('TEST("coucou","coucou")').length, 6);

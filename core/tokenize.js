@@ -41,6 +41,12 @@ function tokenize(str) {
         return t_in(str);
     } else if(t_endfor(str)) {
         return t_endfor(str);
+    } else if (t_open_parenthesis(str)) {   
+        return t_open_parenthesis(str);
+    } else if (t_closing_parenthesis(str)) {
+        return t_closing_parenthesis(str)
+    } else if (t_param_seraparator(str)) {
+        return t_param_seraparator(str);
     } else if (t_string(str)) {
         return t_string(str);
     } else if (t_array(str)) {
@@ -176,7 +182,12 @@ function t_func(str) {
             cpt ++;
         }
     }
-    cpt ++;
+    return {
+        type: 'function',
+        value: funcName.trim(),
+        length: cpt
+    };
+    /*cpt ++;
     const args = [];
     while (str[cpt] !== ')') {
         let sub = str.substring(cpt);
@@ -202,5 +213,40 @@ function t_func(str) {
         args,
         value: funcName.trim(),
         length: cpt
+    };*/
+}
+
+function t_open_parenthesis(str) {
+    if (str[0] !== '(') {
+        return false;
+    }
+    else {
+        return {
+            type: 'open_parenthesis',
+            value: '(',
+            length: 1,
+        };
+    }
+}
+function t_closing_parenthesis(str) {
+    if (str[0] !== ')') {
+        return false;
+    } else {
+        return {
+            type: 'close_parenthesis',
+            value: ')',
+            length: 1,
+        };
+    }
+    
+}
+function t_param_seraparator(str) {
+    if (str[0] !== ',') {
+        return false;
+    }
+    return {
+        type: 'separator',
+        value: ',',
+        length: 1,
     };
 }
