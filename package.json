@@ -1,0 +1,28 @@
+{
+  "name": "shipit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "compiler.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "dependencies": {
+    "chai": "^4.3.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-theo/Grulilang.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d-theo/Grulilang/issues"
+  },
+  "homepage": "https://github.com/d-theo/Grulilang#readme"
+}

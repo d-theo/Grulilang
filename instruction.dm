@@ -1,6 +1,6 @@
 ENV("dev")
-FOR $orga IN ALL_ORGA()
-    FOR $property IN ["src_1"]
-        CHANGE($orga,$property,"rule",JSON("./rule.json"))
+FOR $orga IN ["ATI"]
+    FOR $property IN ["bvbvbv"]
+        CHANGE($orga,$property,"hidden",False)
     ENDFOR
 ENDFOR

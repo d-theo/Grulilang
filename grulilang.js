@@ -1,9 +1,9 @@
 const fs = require('fs');
 const execSync = require('child_process').execSync;
 
-const visitor = require('./compiler');
-const tokenizer = require('./tokenize');
-const parser = require('./parser');
+const visitor = require('./core/compiler');
+const tokenizer = require('./core/tokenize');
+const parser = require('./core/parser');
 
 const mode = 'DEBUG'
 
