@@ -1,8 +1,10 @@
 require('./lib/index');
+
 async function main() {
-	for (let orga of ["ATI","ATIDEMO"]) {
-            for (let property of ["src_1"]) {
-            (await CHANGE(orga,property,"name.fr","ma nouvelle description"))
+	(await ENV("dev"))
+for (const orga of (await ALL_ORGA())) {
+            for (const property of ["src_1"]) {
+            (await CHANGE(orga,property,"rule",(await JSON("./rule.json"))))
     }
     }
 }

@@ -15,7 +15,12 @@ function visitNode(node) {
         return visitString(node);
     } else if(node.type === 'variable') {
         return visitVariable(node);
+    } else if(node.type === 'array') {
+        return visitArray(node);
     }
+}
+function visitArray(node) {
+    return JSON.stringify(node.value);
 }
 function visitString(node) {
     return `"${node.value}"`;
@@ -24,7 +29,7 @@ function visitVariable(node) {
     return `${node.value}`;
 }
 function visitFor(forBlock) {
-    return `for (let ${forBlock.variableAssigned.value} of ${JSON.stringify(forBlock.iteratee.value)}) {
+    return `for (const ${forBlock.variableAssigned.value} of ${visitNode(forBlock.iteratee)}) {
             ${forBlock.instructions.map(i => visitNode(i)).join('\n')}
     }`;
 }

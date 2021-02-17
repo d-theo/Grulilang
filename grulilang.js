@@ -12,10 +12,10 @@ const pgrm = fs.readFileSync('./instruction.dm').toString();
 print(pgrm);
 print('---- tokenize ----');
 const tokens = tokenizer.tokenize_prgm(pgrm);
-print(tokens)
+print(JSON.stringify(tokens));
 print('---- Transforming to AST ----');
 const ast = parser.parse(tokens);
-print(ast)
+print(JSON.stringify(ast, " "));
 print('---- Compiling to Javascript ----');
 const compiled = visitor.visitNodes(ast);
 print(compiled);
