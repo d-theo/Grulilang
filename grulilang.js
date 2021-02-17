@@ -5,10 +5,15 @@ const visitor = require('./core/compiler');
 const tokenizer = require('./core/tokenize');
 const parser = require('./core/parser');
 
-const mode = 'DEBUG'
+const mode = ' DEBUG'
+
+if (process.argv.length !== 3) {
+    console.log('usage : node grulilang.js myfile');
+    process.exit(0);
+}
 
 print('---- get source file ----');
-const pgrm = fs.readFileSync('./instruction.dm').toString();
+const pgrm = fs.readFileSync(process.argv[2]).toString();
 print(pgrm);
 print('---- tokenize ----');
 const tokens = tokenizer.tokenize_prgm(pgrm);
@@ -26,9 +31,9 @@ const lib = `require('./lib/index');\n\n`;
 print('---- Writing to file ----');
 fs.writeFileSync('./out.js', lib+compiled);
 
-print('---- Executing out.js ----');
+/*print('---- Executing out.js ----');
 const output = execSync('node out.js', { encoding: 'utf-8' });
-console.log('Output :\n', output);
+console.log('Output :\n', output);*/
 
 
 function print(any) {

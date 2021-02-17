@@ -1,19 +1,21 @@
 {
-  "name": "shipit",
+  "name": "grulilang",
   "version": "1.0.0",
   "description": "",
-  "main": "compiler.js",
+  "main": "grulilang.js",
   "directories": {
     "lib": "lib",
-    "test": "tests"
+    "test": "tests",
+    "core": "core"
   },
   "dependencies": {
-    "chai": "^4.3.0",
     "axios": "^0.21.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.3.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/index.js"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const tokenizer = require('../tokenize');
+const tokenizer = require('../core/tokenize');
 
 assert.equal(tokenizer.tokenize('"test"').value, "test");
 assert.equal(tokenizer.tokenize('$test').value, 'test');
@@ -39,3 +39,10 @@ assert.equal(tokenizer.t_func('TEST()').type, 'function');
 assert.equal(tokenizer.t_func('TEST("coucou",["test"],TEST())').value, 'TEST');
 assert.equal(tokenizer.t_func('TEST("coucou",["test"],TEST())').length, 30);
 assert.equal(tokenizer.t_func('TEST("coucou",["test"],TEST())').args.length, 3);
+
+assert.equal(tokenizer.t_func('TEST ( "coucou" )').value, 'TEST');
+assert.equal(tokenizer.t_func('TEST ( "coucou" )').length, 17);
+assert.equal(tokenizer.t_func('TEST ( "coucou" )').args[0].value, "coucou");
+
+assert.equal(tokenizer.t_func('TEST ( "coucou" , "theo" )').value, 'TEST');
+assert.equal(tokenizer.t_func('TEST ( "coucou" , "theo" )').length, 26);

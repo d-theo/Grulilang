@@ -51,15 +51,3 @@ function parse(tokens) {
     }
     return ast;
 }
-
-/*(function itShouldParseFor() {
-    const tokens = [
-        {"type":"for","value":"","length":3},
-        {"type":"variable","value":"test","length":5},
-        {"type":"in","value":"","length":2},
-        {"value":["toto"],"type":"array","length":8},
-        {"type":"function","args":[{"type":"variable","value":"test","length":5}],"value":"MODIFY","length":13},
-        {"type":"endfor","value":"","length":6}];
-    const parsed = parseFor(tokens, 0);
-    console.log(parsed);
-}());*/

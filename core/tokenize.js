@@ -26,7 +26,6 @@ function eat(str) {
     cpt = 0;
     while(true) {
         if (str[cpt] != ' ' && str[cpt] != '\n' && str[cpt] != '\t') {
-            console.log('not a blank', str[cpt])
             return cpt;
         }
         cpt ++;
@@ -168,7 +167,7 @@ function t_var(str) {
 function t_func(str) {
     let cpt = 0;
     let funcName = "";
-    while(true || cpt > 100) {
+    while(true) {
         let l = str[cpt];
         if (l === '(') {
             break;
@@ -180,10 +179,19 @@ function t_func(str) {
     cpt ++;
     const args = [];
     while (str[cpt] !== ')') {
-        const sub = str.substring(cpt);
+        let sub = str.substring(cpt);
+        if (eat(sub) > 0) {
+            const len = eat(sub);
+            sub = sub.substring(len);
+            cpt += len;
+        }
         const t = tokenize(sub);
         cpt += t.length;
         args.push(t);
+        if (eat(str.substring(cpt)) > 0) {
+            const len = eat(str.substring(cpt));
+            cpt += len;
+        }
         if (str[cpt] === ',') {
             cpt++;
         }
@@ -192,7 +200,7 @@ function t_func(str) {
     return {
         type: 'function',
         args,
-        value: funcName,
+        value: funcName.trim(),
         length: cpt
     };
 }
