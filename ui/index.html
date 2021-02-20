@@ -2,9 +2,11 @@
     <head>
         <meta charset="UTF-8">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.59.2/codemirror.min.js"></script>
+        <script src="show-hint.js"></script>
         <script src="grulilang.js"></script>
         <script src="../dist/bundle.js"></script>
         <link rel="stylesheet" href="codemirror.css">
+        <link rel="stylesheet" href="show-hint.css">
         <link rel="stylesheet" href="grulilang.css">
     </head>
     <body style="padding: 20px;">
@@ -37,7 +39,9 @@
 
         var transpiledJSEditor;
         var myCodeMirror = CodeMirror(document.getElementById("editor"), {
-            name: "grulilang"
+            name: "grulilang",
+            extraKeys: {"Ctrl-Space": "autocomplete"},
+            showHint: true,
         });
         CodeMirror.defineMode("grulilang");
 
@@ -56,7 +60,7 @@
         }
 
         function initFunctionList() {
-            var fcts = recognisedFunction();
+            var fcts = allowedFunction().map(f => f.verbose);
             for (let f of fcts) {
                 var node = document.createElement("li"); 
                 var textnode = document.createTextNode(f);
