@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "js-beautify": "^1.13.5",
     "lodash": "^4.17.20",
     "webpack": "^5.23.0"
   },
