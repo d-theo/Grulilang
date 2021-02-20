@@ -3,24 +3,47 @@
 #### Usage
 
 ```
-// ecrire dans instruction.dm
-node grulilang.js
+node grulilang.js file
 ```
-
-#### TOTO FUNCTION disponibles
-
-* #ALL_PROPERTIES(orga)
-* #AT_PROPERTIES(orga)
-* #CUSTOM_PROPERTIES(orga)
-* NOTIFY(orga, prop)
-
 #### Functions disponible
 ```
 ENV(env)
-ALL_ORGA()
-CHANGE(orga,prop,field,value)
+env => "dev" | "integ" | "preprod" | "prod"
+```
+```
+ALL_ORGA() // ["orga1",...]
 ```
 
+```
+CHANGE(orga: string,prop: string,field: string,value)
+CHANGE("ATI", "demo_1", "hidden" , True)
+CHANGE("ATI", "demo_1", "rule" , FILE("./rule.json"))
+CHANGE("ATI", "demo_1", "name.en" , "a new name")
+```
+
+```
+AT_CHANGE(allOrga: boolean, orga: array, propertyKey: string, field: string, value)
+possible field ->
+    "name.fr"
+    "name.es"
+    "name.de"
+    "name.en"
+    "description.en"
+    "description.fr" 
+    "description.es" 
+    "description.de" 
+    "ATTags"
+    "internalHidden"
+    "hidden"
+    "scope"
+    "readOnly"
+    "customerType"
+```
+
+```
+NDF_BLACKLIST(propertyKey, boolean)
+ex : NDF_BLACKLIST("test_1", True)
+```
 #### Operateurs disponible
 
 * for -> FOR $var IN [array|function] ENDFOR
@@ -32,6 +55,7 @@ AT/CUSTOM
 MANAGER/ANALYTICS
 READONLY // regle?
 INTERNAL_HIDDEN
+
 
 CHANGE("ATI", "test", "rule", FILE('rule.json'));
 

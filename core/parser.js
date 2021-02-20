@@ -10,11 +10,18 @@ function parseFor(tokens) {
     if (tokens[0].type !== 'for') {
         return false;
     }
-    tokens.shift();
+    tokens.shift(); // FOR
+    let variableAssigned = tokens.shift(); // VAR
+    tokens.shift(); // IN 
 
-    const variableAssigned = tokens.shift();
-    tokens.shift();
-    const iteratee = tokens.shift();
+    // array
+    let iteratee;
+    if (tokens[0].type === 'function') {
+        iteratee = parseFunction(tokens);
+    } else {
+        iteratee = tokens.shift();
+    }
+
     const instructions = [];
     while(tokens[0].type !== 'endfor') {
         const stmt = parseStatement(tokens);
@@ -48,6 +55,7 @@ function parseFunction(functionBlock) {
             }
         }
     }
+    
     functionBlock.shift(); // close_paren
     return {
         type: definition.type,
@@ -62,7 +70,7 @@ function parseStatement(tokens) {
     } else if (tokens[0].type === 'function') {
         return parseFunction(tokens);
     } else {
-        throw new Error('cannot parseStatement', tokens)
+        throw new Error('cannot parseStatement: '+JSON.stringify(tokens))
     }
 }
 

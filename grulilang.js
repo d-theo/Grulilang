@@ -31,11 +31,6 @@ const lib = `require('./lib/index');\n\n`;
 print('---- Writing to file ----');
 fs.writeFileSync('./out.js', lib+compiled);
 
-/*print('---- Executing out.js ----');
-const output = execSync('node out.js', { encoding: 'utf-8' });
-console.log('Output :\n', output);*/
-
-
 function print(any) {
     if (mode == 'DEBUG') {
         console.log(any);

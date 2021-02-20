@@ -34,12 +34,12 @@ function visitVariable(node) {
     return `${node.value}`;
 }
 function visitFor(forBlock) {
-    return `for (const ${forBlock.variableAssigned.value} of ${visitNode(forBlock.iteratee)}) {
+    return `for (const ${forBlock.variableAssigned.value} of (${visitNode(forBlock.iteratee)})) {
             ${forBlock.instructions.map(i => visitNode(i)).join('\n')}
     }`;
 }
 function visitFunction(functionBlock) {
-    return `(await ${functionBlock.value}(${functionBlock.args.map(arg => visitNode(arg))}))`;
+    return `await ${functionBlock.value}(${functionBlock.args.map(arg => visitNode(arg))})`;
 }
 
 module.exports = {
