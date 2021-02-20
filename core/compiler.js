@@ -2,8 +2,8 @@ function visitNodes(nodes) {
     const header = 'async function main() {';
     const body = nodes.map(n => visitNode(n)).join('\n');
     const footer = `}
-    main();
-    `;
+main();
+`;
     return header + '\n\t' + body + '\n' +footer;
 }
 function visitNode(node) {
