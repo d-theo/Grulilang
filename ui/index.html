@@ -22,9 +22,7 @@
               </spa></div>
               <div class="block">
                 <span class="g-span">supported functions</span>
-                <ul>
-                    <li>MODIFY</li>
-                </ul>
+                <ul id="functionlist"></ul>
             </div>
           </div>
           <div style="margin-top: 20px;" class="d-flex">
@@ -34,6 +32,8 @@
           <button onclick="compile()" id="transpile">transpile to JS</button>
     </body>
     <script>
+        initFunctionList();
+
         var transpiledJSEditor;
         var myCodeMirror = CodeMirror(document.getElementById("editor"), {
             name: "grulilang"
@@ -51,6 +51,16 @@
                 });
             } else {
                 transpiledJSEditor.setValue(GruliCompiler.transpileToJS(code));
+            }
+        }
+
+        function initFunctionList() {
+            var fcts = recognisedFunction();
+            for (let f of fcts) {
+                var node = document.createElement("li"); 
+                var textnode = document.createTextNode(f);
+                node.appendChild(textnode);
+                document.getElementById("functionlist").appendChild(node);
             }
         }
       </script>
