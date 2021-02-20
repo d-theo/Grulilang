@@ -5,6 +5,10 @@
 ```
 node grulilang.js file
 ```
+
+#### UI
+lancer le fichier ui/index.html
+
 #### Functions disponible
 ```
 ENV(env)
