@@ -27,13 +27,14 @@
                 </ul>
             </div>
           </div>
-          <div class="d-flex">
-            <div style="margin-top: 20px;" id="editor"></div>
+          <div style="margin-top: 20px;" class="d-flex">
+            <div id="editor"></div>
             <div style="margin-left: 50px;" id="editor-js"></div>
           </div>
           <button onclick="compile()" id="transpile">transpile to JS</button>
     </body>
     <script>
+        var transpiledJSEditor;
         var myCodeMirror = CodeMirror(document.getElementById("editor"), {
             name: "grulilang"
         });
@@ -41,12 +42,16 @@
 
         function compile() {
             const code = myCodeMirror.getValue();
-            var transpiledJSEditor = CodeMirror(document.getElementById("editor-js"), {
+            if (! transpiledJSEditor) {
+                transpiledJSEditor = CodeMirror(document.getElementById("editor-js"), {
                 value: GruliCompiler.transpileToJS(code),
                 lineNumbers: true,
                 name: "javascript",
                 json: true,
-            });
+                });
+            } else {
+                transpiledJSEditor.setValue(GruliCompiler.transpileToJS(code));
+            }
         }
       </script>
       <style>

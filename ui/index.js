@@ -8,10 +8,10 @@ export function transpileToJS(pgrm) {
     const ast = parser.parse(tokens);
     const compiled = compiler.visitNodes(ast);
     const lib = `require('./lib/index');\n\n`;
-    return lib+compiled;
+    return beautify(lib+compiled);
 }
 
 export function beautify(code) {
-    var formattedJSON = beautify_js(jsonText, { indent_size: 2 });
+    var formattedJSON = beautify_js(code, { indent_size: 2 });
     return formattedJSON;
 }
