@@ -1,0 +1,39 @@
+.d-flex {
+    display: flex;
+}
+.align-item-center {
+    align-items: center;
+}
+.justify-content-center {
+    justify-content: center;
+}
+.block {
+    background-color: #fBfBfB;
+    border: gray solid 1px;
+    margin-right: 20px;
+    padding: 8px;
+}
+.g-span {
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: bold;
+}
+.cm-variable {
+    color: green;
+}
+.cm-function {
+    color: blue; 
+}
+
+.cm-keyword {
+    color: red;
+}
+
+.cm-string {
+    color: yellow;
+}
+
+.cm-unknown {
+    background-color: red;
+    color: white;
+}
