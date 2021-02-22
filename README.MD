@@ -2,7 +2,7 @@
 
 ### Demo
 
-![Alt Text](https://github.com/d-theo/Grulilang/master/demo.gif)
+![Alt Text](https://github.com/d-theo/Grulilang/blob/master/demo.gif)
 
 #### Installation
 
