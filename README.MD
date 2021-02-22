@@ -1,5 +1,16 @@
 ### BUT : faire un mini langage de programmation pour datamanager
 
+### Demo
+
+![Alt Text](https://github.com/d-theo/Grulilang/master/demo.gif)
+
+#### Installation
+
+```
+npm install
+npm run build
+```
+
 #### Usage
 
 ```
