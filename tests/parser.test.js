@@ -1,4 +1,5 @@
 const { assert } = require('chai');
+const _ = require('lodash');
 const parser = require('../core/parser');
 
 (function testParseFor() {
@@ -13,6 +14,32 @@ const parser = require('../core/parser');
         { type: 'close_parenthesis', value: ')', length: 1 },
         {"type":"endfor","value":"","length":6}];
     const parsed = parser.parseFor(tokens, 0);
+    const expected = {
+        "type": "for",
+        "iteratee": {
+            "value": ["toto"],
+            "type": "array",
+            "length": 8
+        },
+        "variableAssigned": {
+            "type": "variable",
+            "value": "test",
+            "length": 5
+        },
+        "instructions": [{
+            "type": "function",
+            "args": [{
+                "type": "string",
+                "value": "coucou",
+                "length": 8
+            }],
+            "value": "TEST"
+        }]
+    };
+    
+    // deep comparaison is kinda bugged with assert+chai
+    assert.equal(_.isEqual(parsed, expected), true);
+
     assert.equal(parsed.type, 'for')
     assert.equal(parsed.iteratee.type, 'array')
     assert.equal(parsed.variableAssigned.type, 'variable')
